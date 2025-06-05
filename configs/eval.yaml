@@ -1,0 +1,40 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - data: ethanol
+  - model: elec_state
+  - trainer: default
+  - paths: default
+  - hydra: default
+  - logger: wandb
+  - launcher: null
+
+  # experiment configs allow for version control of specific hyperparameters
+  # e.g. best hyperparameters for given model and datamodule
+  - experiment: null
+
+# task name, determines output directory path
+task_name: "eval"
+
+# run name, determines the wandb name and directory path after task name
+run_name: null
+
+# whether to cap the number of data samples for evaluation
+num_eval: null
+pyscf_max_steps: 15000
+
+# seed for random number generators
+seed: null
+debug: False
+
+# set to True if no logging for debugging purposes
+no_logger: False
+
+# checkpoint path to load weights for evaluation
+ckpt_dir: null
+
+# DFT configuration
+basis_name: def2-svp
+xc_method: b3lyp
+grid_level: 3

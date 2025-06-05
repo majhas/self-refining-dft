@@ -1,0 +1,15 @@
+_target_: src.data.datamodule.DataModule
+dataset:
+  _target_: src.data.dataset.GraphDataset
+  dataset_name: uracil
+  dataset_args:
+    root: ${path.data_dir}
+
+train_indices: ${path.data_dir}/${data.dataset.dataset_name}/train_indices.npy
+valid_indices: ${path.data_dir}/${data.dataset.dataset_name}/valid_indices.npy
+test_indices: ${path.data_dir}/${data.dataset.dataset_name}/test_indices.npy
+batch_size: 4
+load_preprocessed: false
+basis_name: ${basis_name}
+xc_method: ${xc_method}
+grid_level: ${grid_level}

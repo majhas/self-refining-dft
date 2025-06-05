@@ -1,0 +1,16 @@
+_target_: src.data.datamodule.DataModule
+dataset:
+  _target_: src.data.dataset.GraphDataset
+  dataset_name: ethanol
+  dataset_args:
+    root: ${paths.data_dir}
+
+  basis_name: ${basis_name}
+  xc_method: ${xc_method}
+  grid_level: ${grid_level}
+  load_preprocessed: false
+
+train_indices: ${paths.data_dir}/${data.dataset.dataset_name}/train_indices.npy
+valid_indices: ${paths.data_dir}/${data.dataset.dataset_name}/valid_indices.npy
+test_indices: ${paths.data_dir}/${data.dataset.dataset_name}/test_indices.npy
+batch_size: 4

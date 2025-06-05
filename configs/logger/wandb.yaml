@@ -1,0 +1,8 @@
+_target_: src.commons.logger.WandBLogger
+on_step: true
+log_step_frequency: 100
+project: null
+entity: null
+dir: ${paths.output_dir}
+id: null
+name: null

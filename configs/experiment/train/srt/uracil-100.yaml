@@ -1,0 +1,10 @@
+# @package _global_
+
+defaults:
+  - override /model: elec_state
+  - override /data: uracil
+  - override /trainer: self_refining_async
+
+
+trainer:
+  num_data_samples: 25000

@@ -1,0 +1,24 @@
+defaults:
+  - default
+  - /model: elec_state
+
+_target_: src.trainer.async_trainer.AsyncSelfRefiningTrainer
+
+batch_size: ${data.batch_size}
+training_buffer_max_size: 2048
+num_pretrain_steps: 10_000
+sample_buffer_prob: 0.9
+num_data_samples: 25000
+num_init_samples: 128
+
+sampler:
+  _target_: src.trainer.sampler.MCMCSampler
+  _partial_: true
+  batch_size: 1
+  step_size: 2e-3
+  num_mcmc_steps: 10
+  kernel_method: "mala"
+  basis_name: ${basis_name}
+  xc_method: ${xc_method}
+  grid_level: ${grid_level}
+  buffer_max_size: 4

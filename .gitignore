@@ -1,0 +1,24 @@
+*.csv
+
+**/__pycache__/**
+
+*.egg-info/
+build/
+wandb/
+logs/
+output/
+results/
+checkpoints/
+notebooks/
+
+*.egg-info
+
+# cache
+.pytest_cache/
+.ruff_cache/
+
+# slurm
+*.sh
+errors/
+outputs/
+.ipynb_checkpoints/

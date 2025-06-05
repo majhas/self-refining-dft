@@ -1,0 +1,15 @@
+_target_: src.data.datamodule.DataModule
+dataset:
+  _target_: src.data.dataset.GraphDataset
+  dataset_name: malondialdehyde
+  dataset_args:
+    root: ${oc.env:SCRATCH_DIR}/data/md17
+
+train_indices: ${oc.env:SCRATCH_DIR}/data/md17/${data.dataset.dataset_name}/train_indices.npy
+valid_indices: ${oc.env:SCRATCH_DIR}/data/md17/${data.dataset.dataset_name}/valid_indices.npy
+test_indices: ${oc.env:SCRATCH_DIR}/data/md17/${data.dataset.dataset_name}/test_indices.npy
+batch_size: 4
+load_preprocessed: false
+basis_name: ${basis_name}
+xc_method: ${xc_method}
+grid_level: ${grid_level}

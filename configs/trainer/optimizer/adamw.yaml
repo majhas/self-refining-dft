@@ -1,0 +1,10 @@
+_target_: optax.chain
+
+_args_:
+  - _target_: optax.clip_by_global_norm
+    max_norm: 1.0
+
+  # inject_hyperparams(optax.adamw)(learning_rate=<cosine-schedule>, ...)
+  - _target_: src.trainer.opt_wrapper.adamw
+    learning_rate: ${trainer.scheduler}
+    weight_decay: 1e-6

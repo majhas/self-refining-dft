@@ -1,0 +1,7 @@
+log_dir: ${oc.env:SCRATCH_DIR}/logs/
+data_dir: ${oc.env:SCRATCH_DIR}/data/md17
+
+# path to output directory, created dynamically by hydra
+# path generation pattern is specified in `configs/hydra/default.yaml`
+# use it to store all files generated during the run, like ckpts and metrics
+output_dir: ${hydra:runtime.output_dir}

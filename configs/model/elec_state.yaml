@@ -1,0 +1,25 @@
+_target_: src.models.electronic_state_model.ElectronicStateModel
+
+# network args
+hidden_channels: 256
+num_layers: 6
+rbf_type: expnorm
+trainable_rbf: true
+activation: silu
+neighbor_embedding: true
+cutoff_lower: 0.
+cutoff_upper: 20.
+max_species: 100
+attn_activation: silu
+num_heads: 8
+clip_during_norm: true
+qk_norm: true
+norm_coors: false
+norm_coors_scale_init: 1.e-2
+
+num_coef_layers: 6
+num_coef_heads: 8
+max_orbital_species: 50
+norm_coefficients: false
+density_mixing: false
+resnet: true

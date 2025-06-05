@@ -1,0 +1,12 @@
+defaults:
+  - scheduler: cosine
+  - optimizer: adamw
+
+basis_name: ${basis_name}
+xc_method: ${xc_method}
+grid_level: ${grid_level}
+
+num_iterations: 200_000
+num_recycle_steps: 10
+eval_freq: 5_000
+save_every: 1_000

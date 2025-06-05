@@ -1,0 +1,19 @@
+# @package _global_
+
+defaults:
+  - override /model: elec_state
+  - override /data: uracil
+  - override /trainer: self_refining_async
+
+
+# use run_name defined in the script
+run_name: uracil-srt-10
+
+# use the ckpt_dir used in the training run
+ckpt_dir: ${paths.log_dir}/train/runs/${run_name}/checkpoints
+
+logger:
+  name: eval-${run_name}
+
+trainer:
+  num_data_samples: 2500

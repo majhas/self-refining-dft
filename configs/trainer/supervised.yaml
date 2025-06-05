@@ -1,0 +1,9 @@
+defaults:
+  - default
+  - /model: elec_state
+
+_target_: src.trainer.supervised_trainer.SupervisedTrainer
+
+
+batch_size: ${data.batch_size}
+num_data_samples: 25000
