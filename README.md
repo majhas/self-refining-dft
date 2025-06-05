@@ -1,8 +1,7 @@
 # Self-Refining DFT
 
 ## Setup
-Define the environment variables in .env.example file and change
-the name to .env
+Define the environment variables in `.env.example` file and rename to `.env`
 
 ## Install
 ```
