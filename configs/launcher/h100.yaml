@@ -12,4 +12,4 @@ hydra:
     array_parallelism: 100 # max num of tasks to run in parallel (via job array)
     setup:
       - "eval \"$(micromamba shell hook --shell bash)\""
-      - "micromamba activate boltzdft"
+      - "micromamba activate srt"

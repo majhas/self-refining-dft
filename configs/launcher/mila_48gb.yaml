@@ -14,6 +14,6 @@ hydra:
     setup:
       - "module purge"
       - "module load miniconda/3"
-      - "conda activate boltzdft"
+      - "conda activate srt"
     additional_parameters:
       nodelist: cn-a[001-011],cn-c[001-040],cn-l[001-091]
