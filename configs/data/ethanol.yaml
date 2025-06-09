@@ -10,7 +10,4 @@ dataset:
   grid_level: ${grid_level}
   load_preprocessed: false
 
-train_indices: ${paths.data_dir}/${data.dataset.dataset_name}/train_indices.npy
-valid_indices: ${paths.data_dir}/${data.dataset.dataset_name}/valid_indices.npy
-test_indices: ${paths.data_dir}/${data.dataset.dataset_name}/test_indices.npy
 batch_size: 4

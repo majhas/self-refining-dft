@@ -21,7 +21,7 @@ task_name: "train"
 run_name: null
 
 # seed for random number generators
-seed: null
+seed: 42
 debug: False
 
 # set to True if no logging for debugging purposes
