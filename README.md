@@ -9,7 +9,7 @@
 We introduce an efficient method that simultaneously trains a deep-learning model to predict the DFT outputs and samples molecular conformations that are used as training data for the model. We derive our method as a minimization of the variational upper bound on the KL-divergence measuring the discrepancy between the generated samples and the target Boltzmann distribution defined by the ground state energy. To demonstrate the utility of the proposed scheme, we perform an empirical study comparing it with the models trained on the pre-collected datasets. Finally, we provide an asynchronous implementation of the proposed algorithm, enabling simultaneous sampling and training.
 
 <p align="center">
-  <img src="assets/srt_main_fig.png" alt="Description" width="1000"/>
+  <img src="assets/full_density.gif" alt="Description" width="1000"/>
 </p>
 
 ## Setup
