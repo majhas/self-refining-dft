@@ -1,0 +1,8 @@
+# @package _global_
+
+defaults:
+  - override /model: elec_state
+  - override /data: preprocess
+  - override /trainer: self_refining_async
+
+basis_name: 6-31g
