@@ -42,10 +42,12 @@ def main(cfg: DictConfig):
 
     datamodule = instantiate(cfg.data)
     model = instantiate(cfg.model)
-    logger = instantiate(cfg.logger)
 
     if debug or cfg.no_logger:
         logger = None
+    else:
+        logger = instantiate(cfg.logger)
+
 
     # log config and model to wandb
     log_hyperparameters(logger=logger, object_dict={"cfg": cfg, "model": model})
