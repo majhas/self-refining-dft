@@ -167,10 +167,16 @@ class MD17Dataset:
         self.atomic_inputs = load_memmap(processed_filepaths[0], np.float32).reshape(
             -1, num_atoms, 4
         )
-        self.energy = load_memmap(processed_filepaths[1], dtype=np.float32).reshape(
-            -1, 1
-        )
-
+        # self.energy = load_memmap(processed_filepaths[1], dtype=np.float32).reshape(
+        #     -1, 1
+        # )
+        numpy_file = os.path.join(self.processed_dir, "6-31g", "preprocessed.npz")
+        data = np.load(numpy_file, allow_pickle=True)
+        # self.atomic_number = data["atomic_number"]
+        # self.position = data["position"]
+        self.coefficient = data["coefficient"]
+        self.energy = data["energy"]
+        
     def __len__(self):
         return len(self.atomic_inputs)
 
@@ -178,5 +184,10 @@ class MD17Dataset:
         atomic_number = np.array(self.atomic_inputs[idx, :, 0], dtype=int)
         position = np.array(self.atomic_inputs[idx, :, 1:])
         energy = np.array(self.energy[idx, :])
+        coefficient = np.array(self.coefficient[idx])
 
-        return {"atomic_number": atomic_number, "position": position, "energy": energy}
+        return {"atomic_number": atomic_number, "position": position, "energy": energy, "coefficient": coefficient}
+
+
+if __name__ == "__main__":
+    dataset = MD17Dataset(root="/scratch/m/majhas/self-refining-dft/data/md17", name="ethanol")

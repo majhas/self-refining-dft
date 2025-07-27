@@ -4,6 +4,9 @@ from functools import partial
 import numpy as np
 from loguru import logger as log
 
+import rootutils
+rootutils.setup_root(__file__, pythonpath=True)
+
 from src.commons.graph import build_graph, build_graph_no_hamil
 from src.commons.types import Data, Mesh, OneElectron, TwoElectron
 from src.data.h2_dataset import H2Dataset
@@ -206,6 +209,7 @@ class GraphDataset(BaseDataset):
         atomic_number = data["atomic_number"]
         position = data["position"]
         energy = data.get("energy", None)
+        coefficient = data.get("coefficient", None)
 
         # need position to be [batch_size, n_nodes, 3]
         # expect the batch to have all the same molecule
@@ -226,6 +230,7 @@ class GraphDataset(BaseDataset):
             orbital_index=data.orbital_index,
             orbital_tokens=data.orbital_tokens,
             energy=data.energy,
+            coefficient=coefficient
         )
 
 
@@ -234,7 +239,7 @@ class SupervisedGraphDataset(BaseDataset):
         self,
         dataset_name: str,
         dataset_args: dict,
-        basis_name: str = "6-31g*",
+        basis_name: str = "6-31g",
         xc_method: str = "pbe",
         grid_level: int = 3,
         load_preprocessed: bool = False,
@@ -264,3 +269,47 @@ class SupervisedGraphDataset(BaseDataset):
             position=position,
             energy=energy,
         )
+
+class MolDataset(BaseDataset):
+    def __init__(
+        self,
+        dataset_name: str,
+        dataset_args: dict,
+        basis_name: str = "6-31g",
+        xc_method: str = "pbe",
+        grid_level: int = 3,
+        load_preprocessed: bool = False,
+    ):
+        super(MolDataset, self).__init__(
+            dataset_name,
+            dataset_args,
+            basis_name,
+            xc_method,
+            grid_level,
+            load_preprocessed,
+        )
+
+    def __getitem__(self, idx):
+        data = self.dataset[idx]
+        atomic_number = data["atomic_number"]
+        position = data["position"]
+        energy = data.get("energy", None)
+
+        # need position to be [batch_size, n_nodes, 3]
+        # expect the batch to have all the same molecule
+        center = position.mean(axis=0, keepdims=True)
+        position -= center
+
+        return {
+            "atomic_number": atomic_number,
+            "position": position,
+        }
+    
+if __name__ == "__main__":
+    dataset = GraphDataset(
+        dataset_name="ethanol",
+        dataset_args={"root": "/scratch/m/majhas/self-refining-dft/data/md17"},
+        basis_name="6-31g",
+        xc_method="b3lyp"
+    )
+    breakpoint()

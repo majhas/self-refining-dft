@@ -45,6 +45,7 @@ class Graph:
     orbital_index: Union[np.array, jnp.array]
     hamiltonian: Any = 0
     energy: Union[np.array, jnp.array, float] = 0
+    coefficient: np.array = 0
 
 
 @flax.struct.dataclass

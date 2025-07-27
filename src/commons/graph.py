@@ -47,6 +47,7 @@ def build_graph(
     xc_method: str = "lda",
     grid_level: int = 3,
     center: bool = True,
+    coefficient= None
 ) -> Graph:
     if center:
         position = position - np.mean(position, axis=0, keepdims=True)
@@ -80,6 +81,7 @@ def build_graph(
         hamiltonian=hamiltonian,
         orbital_index=orbital_index,
         orbital_tokens=orbital_tokens,
+        coefficient=coefficient
     )
 
 
